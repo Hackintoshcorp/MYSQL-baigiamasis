@@ -1,0 +1,273 @@
+<html>
+<head>
+  <title>Viesbuciu rezervacija</title>
+  <link href="assets/output.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/main.js"></script>
+</head>
+
+<body>
+
+<div class="h-full">
+  <header class="bg-white shadow">
+    <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
+      <div class="relative flex h-16 justify-between">
+        <div class="relative z-10 flex px-2 lg:px-0">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="block h-8 w-auto" src="assets/mark.svg" alt="Your Company">
+          </div>
+        </div>
+       
+        
+      </div>
+      
+    </div>
+
+  </header>
+
+  <main class="mx-auto max-w-7xl pb-10 lg:py-12 lg:px-8">
+    <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
+      <aside id="nav_bar" class="py-6 px-2 sm:px-6 lg:col-span-3 lg:py-0 lg:px-0">
+        
+      </aside>
+
+      <!-- Payment details -->
+      <div class="space-y-6 sm:px-6 lg:col-span-9 lg:px-0">
+        <section aria-labelledby="payment-details-heading">
+            <div class="shadow sm:overflow-hidden sm:rounded-md">
+              <div class="bg-white py-6 px-4 sm:p-6">
+                <div>
+                  <h2 id="payment-details-heading" class="text-lg font-medium leading-6 text-gray-900">Rezervacija</h2>
+                  <p class="mt-1 text-sm text-gray-500">Update your billing information. Please note that updating your location could affect your tax rates.</p>
+                </div>
+				 <div class="mt-6 grid grid-cols-4 gap-6">
+                  <div class="col-span-4 sm:col-span-2">
+                    <label for="client_data" class="block text-sm font-medium text-gray-700">Pasirinkite klienta</label>
+                    <select id="client_data" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                      <option value="new">Naujas</option>
+                      
+                    </select>
+				</div>
+				 </div>
+				<div id="new_client" class="hidden">
+				<div>
+                  <p class="mt-6 text-sm text-gray-500">Naujo kliento informacija:</p>
+                </div>
+				 <div class="mt-6 grid grid-cols-4 gap-6">
+                  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Vardas Pavarde</label>
+                    <input id="vardas_pavarde" type="text" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="vardenis pavardenis">
+                  </div>
+
+                  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Tel nr</label>
+                    <input id="tel_nr" type="text" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="86000000">
+                  </div>
+
+                  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">El pastas</label>
+                    <input id="el_pastas" type="text" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="email@example.com">
+                  </div>
+				  
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Salis</label>
+                    <input id="salis" type="text" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="email@example.com">
+                  </div>
+
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Miestas</label>
+                    <input id="miestas" type="text" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="email@example.com">
+                  </div>
+				  
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Adresas</label>
+                    <input id="adresas" type="text" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="email@example.com">
+                  </div>
+
+				</div>
+				</div>
+				
+				
+				<div>
+                  <p class="mt-6 text-sm text-gray-500">Rezervacijos informacija :</p>
+                </div>
+				 <div class="mt-6 grid grid-cols-4 gap-6">
+                  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Kambario Nr.</label>
+                    <select id="kambario_nr" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                    </select>
+                  </div>
+				  
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Aptarnaves darbuotojas</label>
+                    <select id="aptarnaves_darbuotojas" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                    </select>
+                  </div>
+				  
+				  
+				  
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Atvyks</label>
+					<input type="date" id="atvyks" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+										
+                  </div>
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Isvyks</label>
+                    <input type="date" id="isvyks" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+				</div>
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Mokama suma : 0.0 Eur</label>
+                    
+                  </div>
+				  </div>
+				  <div id="extra" class="hidden">
+				  <div>
+                  <p class="mt-6 text-sm text-gray-500">Siam klientui priklausys : SPA, maitinimas, automobilio vieta arba tik keli is ju.</p>
+                </div>
+				 <div class="mt-6 grid grid-cols-4 gap-6">
+				
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Spa laikas</label>
+                    <select id="spa" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                    </select>
+                  </div>
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Automobilio vieta</label>
+                    <select id="auto" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                    </select>
+                  </div>
+				  <div class="col-span-4 sm:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Maitinimas.</label>
+                    <select id="maitinimas" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                      <option value="1">Taip</option>
+                      <option value="0">Ne</option>
+                    </select>
+                  </div>
+                  
+                </div>
+				</div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                <button id="add_rezervacija" class="inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Saugoti</button>
+              </div>
+            </div>
+          
+        </section>
+		
+		
+
+       
+
+        <!-- Billing history -->
+        <section aria-labelledby="billing-history-heading">
+          <div class="bg-white pt-6 shadow sm:overflow-hidden sm:rounded-md">
+            <div class="px-4 sm:px-6">
+              <h2 id="billing-history-heading" class="text-lg font-medium leading-6 text-gray-900">Rezervacijos duomenys</h2>
+			  	<button id="atnaujinti_duomenis" class="mt-5 inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Gauti naujausius duomenis</button>
+            </div>
+            <div class="mt-6 flex flex-col">
+              <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                  <div class="overflow-hidden border-t border-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200">
+                      <thead class="bg-gray-50">
+                        <tr>
+                          <th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Klientas</th>
+                          <th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Kambarys</th>
+                          <th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Darbuotojas</th>
+						  <th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Atvyks</th>
+						  <th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Isvyks</th>
+						  <th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Matinimas</th>
+						  <th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Automobilio vieta</th>
+						  <th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Spa laikas</th>
+                            <th scope="col" class="relative px-6 py-3 text-left text-sm font-medium text-gray-500">
+                            <span class="sr-only">View receipt</span>
+                          </th>
+						  <th scope="col" class="relative px-6 py-3 text-left text-sm font-medium text-gray-500">
+                            <span class="sr-only">View receipt</span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody id="content" class="divide-y divide-gray-200 bg-white">
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+<div id="remove_modal_extra_html" class="hidden"></div>
+
+<script>
+    $(document).ready(function() {
+	
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"1"},dataType:"json",success:function(e){var t=$("#client_data");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text(n.vardas_pavarde);t.append(a)})},error:function(e,t,n){console.error(n)}});
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"2"},dataType:"json",success:function(e){var t=$("#kambario_nr");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text("Kambario nr: " + n.kambario_nr+", klase: "+n.klase+", paros kaina: "+n.paros_kaina + " Eur.");t.append(a)})},error:function(e,t,n){console.error(n)}});
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"3"},dataType:"json",success:function(e){var t=$("#aptarnaves_darbuotojas");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text(n.vardas_pavarde);t.append(a)})},error:function(e,t,n){console.error(n)}});
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"4"},dataType:"json",success:function(e){var t=$("#spa");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text(n.laikas);t.append(a)})},error:function(e,t,n){console.error(n)}});
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"5"},dataType:"json",success:function(e){var t=$("#auto");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text(n.auto_vieta);t.append(a)})},error:function(e,t,n){console.error(n)}});
+
+	$('#add_rezervacija').click(function() {
+		postData('backend/rezervacija.php', {
+						client_data: $('#client_data').val(),
+						vardas_pavarde: $('#vardas_pavarde').val(),
+						tel_nr: $('#tel_nr').val(),
+						el_pastas: $('#el_pastas').val(),
+						salis: $('#salis').val(),
+						miestas: $('#miestas').val(),
+						adresas: $('#adresas').val(),
+						kambario_nr: $('#kambario_nr').val(),
+						aptarnaves_darbuotojas: $('#aptarnaves_darbuotojas').val(),
+						atvyks: $('#atvyks').val(),
+						isvyks: $('#isvyks').val(),
+						spa: $('#spa').val(),
+						auto: $('#auto').val(),
+						maitinimas: $('#maitinimas').val()
+		}, 'http://localhost/backend/rezervacija.php?data=6', '#content');
+	});
+	
+	loadData('http://localhost/backend/rezervacija.php?data=6', '#content');
+	$('#atnaujinti_duomenis').click(function() {
+		loadData('http://localhost/backend/rezervacija.php?data=6', '#content');
+	});
+	
+  $('#kambario_nr').change(function() {
+  var selectedText = $(this).find('option:selected').text();
+  if (selectedText.includes('liuks')) {
+    $('#extra').removeClass('hidden');
+  } else {
+    $('#extra').addClass('hidden');
+  }
+});
+
+  
+  $('#client_data').change(function() {
+  var selectedValue = $(this).val();
+  if (selectedValue.includes('new')) {
+    $('#new_client').removeClass('hidden');
+  } else {
+    $('#new_client').addClass('hidden');
+  }
+});
+
+       
+    });
+	
+	
+</script>
+
+</body>
+
+</html>

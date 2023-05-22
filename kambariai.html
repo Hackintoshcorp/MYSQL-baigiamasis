@@ -1,0 +1,203 @@
+<html>
+	<head>
+		<title>Viesbuciu rezervacija</title>
+		<link href="assets/output.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="assets/main.js"></script>
+	</head>
+	<body>
+		<div class="h-full">
+			<header class="bg-white shadow">
+				<div class="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
+					<div class="relative flex h-16 justify-between">
+						<div class="relative z-10 flex px-2 lg:px-0">
+							<div class="flex flex-shrink-0 items-center">
+								<img class="block h-8 w-auto" src="assets/mark.svg" alt="Your Company">
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<main class="mx-auto max-w-7xl pb-10 lg:py-12 lg:px-8">
+				<div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
+					<aside id="nav_bar" class="py-6 px-2 sm:px-6 lg:col-span-3 lg:py-0 lg:px-0"></aside>
+					<div class="space-y-6 sm:px-6 lg:col-span-9 lg:px-0">
+						<section aria-labelledby="payment-details-heading">
+							<div class="shadow sm:overflow-hidden sm:rounded-md">
+								<div class="bg-white py-6 px-4 sm:p-6">
+									<div>
+										<h2 id="payment-details-heading" class="text-lg font-medium leading-6 text-gray-900">Prideti Kambari</h2>
+										<p class="mt-1 text-sm text-gray-500">Cia uzpilde duomenis galite prideti kambari prie duombazes</p>
+									</div>
+									<div class="mt-6 grid grid-cols-4 gap-6">
+										<div class="col-span-4 sm:col-span-2">
+											<label for="first-name" class="block text-sm font-medium text-gray-700">Kambario numeris</label>
+											<input type="text" id="kambario_nr" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="303">
+										</div>
+										<div class="col-span-4 sm:col-span-2">
+											<label for="email-address" class="block text-sm font-medium text-gray-700">Lovu skaicius</label>
+											<input type="text" id="lovu_sk" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="2">
+										</div>
+										<div class="col-span-4 sm:col-span-1">
+											<label for="expiration-date" class="block text-sm font-medium text-gray-700">Klase</label>
+											<input type="text" id="klase" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="Liukas, Mini, Max">
+										</div>
+										<div class="col-span-4 sm:col-span-1">
+											<label for="expiration-date" class="block text-sm font-medium text-gray-700">Paros kaina</label>
+											<input type="text" id="paros_kaina" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="34">
+										</div>
+									</div>
+								</div>
+								<div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+									<button id="add_kambarys" class="inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Saugoti</button>
+								</div>
+							</div>
+						</section>
+						<section aria-labelledby="billing-history-heading">
+							<div class="bg-white pt-6 shadow sm:overflow-hidden sm:rounded-md">
+								<div class="px-4 sm:px-6">
+									<h2 id="billing-history-heading" class="text-lg font-medium leading-6 text-gray-900">Kambariai</h2>
+									<button id="atnaujinti_duomenis" class="mt-5 inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Gauti naujausius duomenis</button>
+								</div>
+								<div class="mt-6 flex flex-col">
+									<div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+										<div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+											<div class="overflow-hidden border-t border-gray-200">
+												<table class="min-w-full divide-y divide-gray-200">
+													<thead class="bg-gray-50">
+														<tr>
+															<th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Kambario nr.</th>
+															<th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Lovu skaicius</th>
+															<th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Klase</th>
+															<th scope="col" class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Paros kaina</th>
+															<th scope="col" class="relative px-6 py-3 text-left text-sm font-medium text-gray-500">
+																<span class="sr-only">View receipt</span>
+															</th>
+															<th scope="col" class="relative px-6 py-3 text-left text-sm font-medium text-gray-500">
+																<span class="sr-only">View receipt</span>
+															</th>
+														</tr>
+													</thead>
+													<tbody id="content" class="divide-y divide-gray-200 bg-white"></tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</main>
+		</div>
+		<div id="remove_modal_extra_html" class="hidden"></div>
+		
+		<div id="kambariai_edit" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+		  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+		  <div class="fixed inset-0 z-10 overflow-y-auto">
+			<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+			  <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+				<div>
+				  <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+					<svg class="h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+					  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+					</svg>
+				  </div>
+				  <div class="mt-3 text-center sm:mt-5">
+					<h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Redagavimas kambario</h3>
+					
+					<div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Kambario nr</label>
+						<input type="text" id="b1" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="303">
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Statusas</label>
+						<input type="text" id="b2" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="303">
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Lovu skaicius</label>
+						<input type="text" id="b3" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="303">
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Klase</label>
+						<input type="text" id="b4" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="303">
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Paros kaina</label>
+						<input type="text" id="b5" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="303">
+					</div>
+					
+					</div>
+					
+				  </div>
+				</div>
+				<div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+					<button id="confirm_cancel_2" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm">Atsaukti</button>
+					<button id="edit_true" type="button" class="inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Atnaujinti duomenis</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<script>
+			$(document).ready(function() {
+			
+				let edit_modal;
+				let id_modal;
+				
+				$(document).on('click', '#editme', function() {
+					edit_modal = $(this).closest('#editme').data('modal');
+					id_modal = $(this).closest('#editme').data('id');
+					let old_value_1 = $(this).closest('tr').find('#a1').text();
+					let old_value_2 = $(this).closest('tr').find('#a2').text();
+					let old_value_3 = $(this).closest('tr').find('#a3').text();
+					let old_value_4 = $(this).closest('tr').find('#a4').text();
+					let old_value_5 = $(this).closest('tr').find('#a5').text();
+					if ($('#' + edit_modal).hasClass('hidden')) {
+					  $('#' + edit_modal).removeClass('hidden');
+					  $('#b1').val(old_value_1);
+					  $('#b2').val(old_value_2);
+					  $('#b3').val(old_value_3);
+					  $('#b4').val(old_value_4);
+					  $('#b5').val(old_value_5);
+					}
+				});
+				
+				$(document).on('click', '#edit_true', function() {
+					if (!$('#' + edit_modal).hasClass('hidden')) {
+					  $('#' + edit_modal).addClass('hidden');
+						
+						postData('backend/update.php', {id:id_modal,table:"kambariai",values:{kambario_nr:$("#b1").val(),statusas:$("#b2").val(),lovu_sk:$("#b3").val(),klase:$("#b4").val(),paros_kaina:$("#b5").val()}}, 'http://localhost/backend/kambariai.php', '#content');
+					
+					}
+				});
+				
+				$(document).on('click', '#confirm_cancel_2', function() {
+					if (!$('#' + edit_modal).hasClass('hidden')) {
+					  $('#' + edit_modal).addClass('hidden');
+					}
+				});
+				
+				$('#add_kambarys').click(function() {
+					postData('backend/kambariai.php', {
+						kambario_nr: $('#kambario_nr').val(),
+						lovu_sk: $('#lovu_sk').val(),
+						klase: $('#klase').val(),
+						paros_kaina: $('#paros_kaina').val()
+					}, 'http://localhost/backend/kambariai.php', '#content');
+				});
+				loadData('http://localhost/backend/kambariai.php', '#content');
+				$('#atnaujinti_duomenis').click(function() {
+					loadData('http://localhost/backend/kambariai.php', '#content');
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -119,7 +119,7 @@
                     <input type="date" id="isvyks" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
 				</div>
 				  <div class="col-span-4 sm:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700">Mokama suma : 0.0 Eur</label>
+                    <label id="mokama_suma" class="block text-sm font-medium text-gray-700">Mokama suma : 0.0 Eur</label>
                     
                   </div>
 				  </div>
@@ -210,14 +210,167 @@
 </div>
 <div id="remove_modal_extra_html" class="hidden"></div>
 
+<div id="rezervacija_edit" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+		  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+		  <div class="fixed inset-0 z-10 overflow-y-auto">
+			<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+			  <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+				<div>
+				  <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+					<svg class="h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+					  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+					</svg>
+				  </div>
+				  <div class="mt-3 text-center sm:mt-5">
+					<h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Redagavimas rezervacijos</h3>
+					
+					<div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Kliento : Vardas Pavarde</label>
+						<select id="b1"  class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+						  <option></option>
+						  
+						</select>
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Kambarys</label>
+					<select id="b2"  class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                      
+                    </select>
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Darbuotojo : Vardas Pavarde</label>
+						<select id="b3"  class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                      
+                    </select>
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Atvyks</label>
+						<input type="date" id="b4" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="303">
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Isvyks</label>
+						<input type="date" id="b5" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm" placeholder="303">
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Matinimas</label>
+					<select id="b6"  class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                      <option value="1">Taip</option>
+                      <option value="0">Ne</option>
+                    </select>
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Automobilio vieta</label>
+					<select id="b7"  class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                      
+                    </select>
+					</div>
+					
+					<div class="mt-2 col-span-4 sm:col-span-2">
+						<label class="block text-sm font-medium text-gray-700">Spa laikas</label>
+					<select id="b8"  class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm">
+                      <option></option>
+                      
+                    </select>
+					</div>
+					
+					</div>
+					
+				  </div>
+				</div>
+				<div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+					<button id="confirm_cancel_2" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm">Atsaukti</button>
+					<button id="edit_true" type="button" class="inline-flex justify-center rounded-md border border-transparent bg-gray-800 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">Atnaujinti duomenis</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+</div>
+
 <script>
     $(document).ready(function() {
 	
-	$.ajax({url:"/backend/rezervacija.php",data:{data:"1"},dataType:"json",success:function(e){var t=$("#client_data");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text(n.vardas_pavarde);t.append(a)})},error:function(e,t,n){console.error(n)}});
-	$.ajax({url:"/backend/rezervacija.php",data:{data:"2"},dataType:"json",success:function(e){var t=$("#kambario_nr");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text("Kambario nr: " + n.kambario_nr+", klase: "+n.klase+", paros kaina: "+n.paros_kaina + " Eur.");t.append(a)})},error:function(e,t,n){console.error(n)}});
-	$.ajax({url:"/backend/rezervacija.php",data:{data:"3"},dataType:"json",success:function(e){var t=$("#aptarnaves_darbuotojas");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text(n.vardas_pavarde);t.append(a)})},error:function(e,t,n){console.error(n)}});
-	$.ajax({url:"/backend/rezervacija.php",data:{data:"4"},dataType:"json",success:function(e){var t=$("#spa");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text(n.laikas);t.append(a)})},error:function(e,t,n){console.error(n)}});
-	$.ajax({url:"/backend/rezervacija.php",data:{data:"5"},dataType:"json",success:function(e){var t=$("#auto");$.each(e,function(e,n){var a=$("<option></option>").attr("value",n.id).text(n.auto_vieta);t.append(a)})},error:function(e,t,n){console.error(n)}});
+	let edit_modal;
+	let id_modal;
+	$(document).on('click', '#editme', function() {
+		edit_modal = $(this).closest('#editme').data('modal');
+		id_modal = $(this).closest('#editme').data('id');
+		if ($('#' + edit_modal).hasClass('hidden')) {
+		  $('#' + edit_modal).removeClass('hidden');
+			$.ajax({url:"/backend/rezervacija.php",data:{data:"1"},dataType:"json",success:function(e){let t=$("#b1");$.each(e,function(e,n){let a=$("<option></option>").attr("value",n.id).text(n.vardas_pavarde);t.append(a)})},error:function(e,t,n){console.error(n)}});
+			$.ajax({url:"/backend/rezervacija.php",data:{data:"2"},dataType:"json",success:function(e){let t=$("#b2");$.each(e,function(e,n){let a=$("<option></option>").attr("value",n.id).text("Kambario nr: " + n.kambario_nr+", klase: "+n.klase+", paros kaina: "+n.paros_kaina + " Eur.");t.append(a)})},error:function(e,t,n){console.error(n)}});
+			$.ajax({url:"/backend/rezervacija.php",data:{data:"3"},dataType:"json",success:function(e){let t=$("#b3");$.each(e,function(e,n){let a=$("<option></option>").attr("value",n.id).text(n.vardas_pavarde);t.append(a)})},error:function(e,t,n){console.error(n)}});
+			
+			$.ajax({url:"/backend/rezervacija.php",data:{data:"5"},dataType:"json",success:function(e){let t=$("#b7");$.each(e,function(e,n){let a=$("<option></option>").attr("value",n.id).text(n.auto_vieta);t.append(a)})},error:function(e,t,n){console.error(n)}});
+			$.ajax({url:"/backend/rezervacija.php",data:{data:"4"},dataType:"json",success:function(e){let t=$("#b8");$.each(e,function(e,n){let a=$("<option></option>").attr("value",n.id).text(n.laikas);t.append(a)})},error:function(e,t,n){console.error(n)}});
+			
+		}
+	});
+	
+	
+	$(document).on('click', '#edit_true', function() {
+		if (!$('#' + edit_modal).hasClass('hidden')) {
+		  $('#' + edit_modal).addClass('hidden');
+			
+			postData('backend/update.php', {id:id_modal,table:"rezervavimas",values:{kliento_id:$("#b1").val(),kambario_id:$("#b2").val(),darbuotojo_id:$("#b3").val(),atvyks:$("#b4").val(),isvyks:$("#b5").val(),maitinimas:$("#b6").val(),auto_vieta_id:$("#b7").val(),spa_laikas_id:$("#b8").val()}}, 'http://localhost/backend/rezervacija.php?data=6', '#content');
+		
+		}
+	});
+	
+	
+	
+	$(document).on('click', '#confirm_cancel_2', function() {
+		if (!$('#' + edit_modal).hasClass('hidden')) {
+		  $('#' + edit_modal).addClass('hidden');
+		}
+	});
+	
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"1"},dataType:"json",success:function(e){let t=$("#client_data");$.each(e,function(e,n){let a=$("<option></option>").attr("value",n.id).text(n.vardas_pavarde);t.append(a)})},error:function(e,t,n){console.error(n)}});
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"2"},dataType:"json",success:function(a){var r=$("#kambario_nr");$.each(a,function(a,n){let o=$("<option></option>").attr("value",n.id).text("Kambario nr: "+n.kambario_nr+", klase: "+n.klase+", paros kaina: "+n.paros_kaina+" Eur.").attr("data-price",n.paros_kaina);r.append(o)})},error:function(a,r,n){console.error(n)}});
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"3"},dataType:"json",success:function(e){let t=$("#aptarnaves_darbuotojas");$.each(e,function(e,n){let a=$("<option></option>").attr("value",n.id).text(n.vardas_pavarde);t.append(a)})},error:function(e,t,n){console.error(n)}});
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"4"},dataType:"json",success:function(e){let t=$("#spa");$.each(e,function(e,n){let a=$("<option></option>").attr("value",n.id).text(n.laikas);t.append(a)})},error:function(e,t,n){console.error(n)}});
+	$.ajax({url:"/backend/rezervacija.php",data:{data:"5"},dataType:"json",success:function(e){let t=$("#auto");$.each(e,function(e,n){let a=$("<option></option>").attr("value",n.id).text(n.auto_vieta);t.append(a)})},error:function(e,t,n){console.error(n)}});
+
+function updateMokamaSuma() {
+
+let selectedOption = $('#kambario_nr option:selected');
+
+  let dataPrice = parseFloat(selectedOption.data('price'));
+
+let atvyks = $('#atvyks').val();
+let isvyks = $('#isvyks').val();
+
+let atvyksDate = new Date(atvyks.split('/').reverse().join('-'));
+let isvyksDate = new Date(isvyks.split('/').reverse().join('-'));
+
+let timeDifference = isvyksDate.getTime() - atvyksDate.getTime();
+
+let daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+console.log(daysDifference);
+
+  $('#mokama_suma').text('Mokama suma: ' + daysDifference*dataPrice + ' Eur.');
+}
+
+$('#kambario_nr, #isvyks, #atvyks').on('change', updateMokamaSuma);
+
+updateMokamaSuma();
+
+
+
+
 
 	$('#add_rezervacija').click(function() {
 		postData('backend/rezervacija.php', {
@@ -233,6 +386,7 @@
 						atvyks: $('#atvyks').val(),
 						isvyks: $('#isvyks').val(),
 						spa: $('#spa').val(),
+						suma: $('#mokama_suma').text(),
 						auto: $('#auto').val(),
 						maitinimas: $('#maitinimas').val()
 		}, 'http://localhost/backend/rezervacija.php?data=6', '#content');
@@ -244,7 +398,7 @@
 	});
 	
   $('#kambario_nr').change(function() {
-  var selectedText = $(this).find('option:selected').text();
+  let selectedText = $(this).find('option:selected').text();
   if (selectedText.includes('liuks')) {
     $('#extra').removeClass('hidden');
   } else {
@@ -254,7 +408,7 @@
 
   
   $('#client_data').change(function() {
-  var selectedValue = $(this).val();
+  let selectedValue = $(this).val();
   if (selectedValue.includes('new')) {
     $('#new_client').removeClass('hidden');
   } else {

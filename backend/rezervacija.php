@@ -13,14 +13,29 @@ $room = $_POST['kambario_nr'];//liuksas
 $worker = $_POST['aptarnaves_darbuotojas'];
 $check_in = $_POST['atvyks'];
 $check_out = $_POST['isvyks'];
+$money = $_POST['suma'];
 $spa = $_POST['spa'];//t/n
 $auto = $_POST['auto'];//t/n
 $food = $_POST['maitinimas'];//t/n
+$date = date("d/m/Y");
+
+$filtered_money = filter_var($money, FILTER_SANITIZE_NUMBER_INT);
 
 if($client != "new"){
 	$sql = "INSERT INTO rezervavimas (kliento_id, kambario_id, darbuotojo_id, atvyks, isvyks, maitinimas, auto_vieta_id, spa_laikas_id) VALUES ('$client', '$room', '$worker', '$check_in', '$check_out'" . (!empty($food) ? ", '$food'" : ", NULL") . (!empty($auto) ? ", '$auto'" : ", NULL") . (!empty($spa) ? ", '$spa'" : ", NULL") . ")";
 
 	if ($conn->query($sql) === true) {
+		$recently_inserted_id = $conn->insert_id;
+			echo "Data inserted successfully";
+	} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+	
+	
+	$sql = "INSERT INTO mokejimas (rezervavimo_id, tipas, apmokejimo_laikas, mokama_suma) VALUES ($recently_inserted_id,'kortele',$date,$filtered_money)";
+
+	if ($conn->query($sql) === true) {
+		
 			echo "Data inserted successfully";
 	} else {
 			echo "Error: " . $sql . "<br>" . $conn->error;
@@ -41,6 +56,16 @@ if($client != "new"){
 	$sql = "INSERT INTO klientai (vardas_pavarde, el_pastas, tel_nr, salis, miestas, adresas) VALUES ('$v_p', '$email', '$tel', '$country', '$city', '$street')";
 
 	if ($conn->query($sql) === true) {
+		$recently_inserted_id = $conn->insert_id;
+			echo "Data inserted successfully";
+	} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+	
+	$sql = "INSERT INTO mokejimas (rezervavimo_id, tipas, apmokejimo_laikas, mokama_suma) VALUES ($recently_inserted_id,'kortele',$date,$filtered_money)";
+	
+	if ($conn->query($sql) === true) {
+		
 			echo "Data inserted successfully";
 	} else {
 			echo "Error: " . $sql . "<br>" . $conn->error;
@@ -143,16 +168,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 						// Print the data
 						echo "
 							<tr>
-								<td id='a1' class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['vardas_pavarde'] . "</td>
-								<td id='a2' class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['kambario_nr'] . "</td>
-								<td id='a3' class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['vardas_pavarde'] . "</td>
-								<td id='a4' class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['atvyks'] . "</td>
-								<td id='a5' class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['isvyks'] . "</td>
-								<td id='a6' class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['maitinimas'] . "</td>
-								<td id='a7' class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['auto_vieta'] . "</td>
-								<td id='a8' class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['laikas'] . "</td>
+								<td class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['vardas_pavarde'] . "</td>
+								<td class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['kambario_nr'] . "</td>
+								<td class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['vardas_pavarde'] . "</td>
+								<td class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['atvyks'] . "</td>
+								<td class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['isvyks'] . "</td>
+								<td class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['maitinimas'] . "</td>
+								<td class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['auto_vieta'] . "</td>
+								<td class='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>" . $row['laikas'] . "</td>
 								<td class='whitespace-nowrap px-6 py-4 text-right text-sm font-medium'>
-									<button id='editme' data-modal='kambariai_edit' data-id='" . $row['id'] . "' class='text-orange-600 hover:text-orange-900'>Redaguoti</button>
+									<button id='editme' data-id='" . $row['id'] . "' data-modal='rezervacija_edit' class='text-orange-600 hover:text-orange-900'>Redaguoti</button>
 								</td>
 								<td class='whitespace-nowrap px-6 py-4 text-right text-sm font-medium'>
 									<button id='deleteme' data-url='backend/rezervacija.php?data=6' data-table='#content' data-category='rezervavimas' data-id='" . $row['id'] . "' class='text-orange-600 hover:text-orange-900'>Trinti</button>
